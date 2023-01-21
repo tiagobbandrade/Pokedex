@@ -1,6 +1,6 @@
 import { MagnifyingGlass } from "phosphor-react";
 import { Link } from "react-router-dom";
-import { Container, Content, ListItem } from "./style";
+import { SidebarContainer, SidebarContent, ListItem } from "./style";
 
 interface SidebarProps {
   isActive: "pokemons" | "favorites";
@@ -14,8 +14,8 @@ interface NavLinkProps {
 
 export function Sidebar({ isActive }: SidebarProps) {
   return (
-    <Container>
-      <Content>
+    <SidebarContainer>
+      <SidebarContent>
         <form>
           <input type="text" placeholder="Search a pokemon" />
           <button type="submit" onClick={(e) => e.preventDefault()}>
@@ -36,8 +36,8 @@ export function Sidebar({ isActive }: SidebarProps) {
             />
           </ul>
         </nav>
-      </Content>
-    </Container>
+      </SidebarContent>
+    </SidebarContainer>
   );
 }
 

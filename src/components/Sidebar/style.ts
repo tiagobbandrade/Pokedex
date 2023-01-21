@@ -4,7 +4,7 @@ interface ListItemProps {
   isActive?: boolean;
 }
 
-export const Container = styled.div`
+export const SidebarContainer = styled.div`
   max-width: 328px;
   width: 100%;
   height: 100vh;
@@ -12,7 +12,7 @@ export const Container = styled.div`
   position: relative;
 `;
 
-export const Content = styled(Container)`
+export const SidebarContent = styled(SidebarContainer)`
   position: fixed;
 
   display: flex;
@@ -118,7 +118,7 @@ export const ListItem = styled.li`
     font-size: 18px;
     font-weight: 600;
 
-    transition: all 0.4s;
+    transition: all 0.4sSidebar;
 
     &:hover {
       background: #da262620;
