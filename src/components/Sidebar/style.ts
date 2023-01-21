@@ -118,7 +118,7 @@ export const ListItem = styled.li`
     font-size: 18px;
     font-weight: 600;
 
-    transition: all 0.4sSidebar;
+    transition: all 0.4s;
 
     &:hover {
       background: #da262620;
