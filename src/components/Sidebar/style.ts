@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface ListItemProps {
+  isActive?: boolean;
+}
+
 export const Container = styled.div`
   max-width: 328px;
   width: 100%;
@@ -54,4 +58,18 @@ export const Content = styled(Container)`
       transform: translateY(-50%);
     }
   }
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 100%;
+  }
+`;
+
+export const ListItem = styled.li`
+  list-style: none;
+  color: ${({ isActive }: ListItemProps) => (isActive ? "#DA2626" : "#7D7D7D")};
+  padding: 20px;
+  width: 100%;
 `;

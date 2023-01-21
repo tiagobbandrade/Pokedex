@@ -1,7 +1,16 @@
 import { MagnifyingGlass } from "phosphor-react";
-import { Container, Content } from "./style";
+import { Container, Content, ListItem } from "./style";
 
-export function Sidebar() {
+interface SidebarProps {
+  isActive: "pokemons" | "favorites";
+}
+
+interface NavLinkProps {
+  isActive: boolean;
+  title: string;
+}
+
+export function Sidebar({ isActive }: SidebarProps) {
   return (
     <Container>
       <Content>
@@ -11,8 +20,23 @@ export function Sidebar() {
             <MagnifyingGlass />
           </button>
         </form>
-        <ul>{/* <NavLink /> */}</ul>
+        <nav>
+          <ul>
+            <NavLink
+              isActive={isActive === "pokemons" ? true : false}
+              title="pokemons"
+            />
+            <NavLink
+              isActive={isActive === "favorites" ? true : false}
+              title="favorites"
+            />
+          </ul>
+        </nav>
       </Content>
     </Container>
   );
+}
+
+function NavLink({ isActive, title }: NavLinkProps) {
+  return <ListItem isActive={isActive}>{title}</ListItem>;
 }
