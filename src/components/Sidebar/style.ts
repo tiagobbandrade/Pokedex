@@ -18,6 +18,7 @@ export const Content = styled(Container)`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 48px;
 
   &::after {
     content: "";
@@ -68,8 +69,53 @@ export const Content = styled(Container)`
 `;
 
 export const ListItem = styled.li`
+  max-width: 328px;
   list-style: none;
+
+  position: relative;
+
   color: ${({ isActive }: ListItemProps) => (isActive ? "#DA2626" : "#7D7D7D")};
-  padding: 20px;
-  width: 100%;
+
+  &::after,
+  &::before {
+    content: "";
+
+    border-radius: 50%;
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    background-color: #da2626;
+    display: ${({ isActive }: ListItemProps) =>
+      isActive ? "inline-block" : "none"};
+  }
+
+  &::after {
+    width: 12px;
+    height: 12px;
+    left: -6px;
+  }
+
+  &::before {
+    width: 16px;
+    height: 16px;
+    opacity: 0.5;
+    left: -7px;
+  }
+
+  a {
+    width: 100%;
+    height: 100%;
+    padding: 20px 0 20px 56px;
+
+    color: inherit;
+
+    display: flex;
+
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 600;
+  }
 `;

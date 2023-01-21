@@ -1,4 +1,5 @@
 import { MagnifyingGlass } from "phosphor-react";
+import { Link } from "react-router-dom";
 import { Container, Content, ListItem } from "./style";
 
 interface SidebarProps {
@@ -8,6 +9,7 @@ interface SidebarProps {
 interface NavLinkProps {
   isActive: boolean;
   title: string;
+  path: string;
 }
 
 export function Sidebar({ isActive }: SidebarProps) {
@@ -25,10 +27,12 @@ export function Sidebar({ isActive }: SidebarProps) {
             <NavLink
               isActive={isActive === "pokemons" ? true : false}
               title="pokemons"
+              path="/"
             />
             <NavLink
               isActive={isActive === "favorites" ? true : false}
               title="favorites"
+              path="/favorites"
             />
           </ul>
         </nav>
@@ -37,6 +41,10 @@ export function Sidebar({ isActive }: SidebarProps) {
   );
 }
 
-function NavLink({ isActive, title }: NavLinkProps) {
-  return <ListItem isActive={isActive}>{title}</ListItem>;
+function NavLink({ isActive, path, title }: NavLinkProps) {
+  return (
+    <ListItem isActive={isActive}>
+      <Link to={path}>{title}</Link>
+    </ListItem>
+  );
 }
