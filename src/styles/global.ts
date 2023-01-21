@@ -11,4 +11,8 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Montserrat', sans-serif;
         height: 100vh;
     }
+
+    button {
+        cursor: pointer;
+    }
 `;
