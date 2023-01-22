@@ -1,12 +1,22 @@
+import { useContext } from "react";
+
 import { HeartStraight } from "phosphor-react";
+
+import { FavoritesPokemonsContext } from "../../App";
 import { Header, Main, PokemonContainer, PokemonInfo } from "./style";
 
 export function PokemonCard() {
+  const favorite = useContext(FavoritesPokemonsContext);
+
   return (
     <PokemonContainer>
       <Header>
         <button>
-          <HeartStraight size={16} />
+          <HeartStraight
+            size={16}
+            weight={favorite?.favorites.includes(1) ? "fill" : "regular"}
+            fill="#DA2626"
+          />
         </button>
         <span>#001</span>
       </Header>

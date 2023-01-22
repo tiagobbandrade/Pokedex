@@ -1,16 +1,8 @@
 import { MagnifyingGlass } from "phosphor-react";
 import { Link } from "react-router-dom";
+import { NavLinkProps, SidebarProps } from "../../types/types";
+
 import { SidebarContainer, SidebarContent, ListItem } from "./style";
-
-interface SidebarProps {
-  isActive: "pokemons" | "favorites";
-}
-
-interface NavLinkProps {
-  isActive: boolean;
-  title: string;
-  path: string;
-}
 
 export function Sidebar({ isActive }: SidebarProps) {
   return (
