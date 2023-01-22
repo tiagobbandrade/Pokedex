@@ -3,22 +3,51 @@ import { PokedexContainer, PokedexGrid } from "./style";
 
 interface PokedexProps {
   title: string;
+  onlyFavorites?: boolean;
 }
 
-export function Pokedex({ title }: PokedexProps) {
+export function Pokedex({ title, onlyFavorites }: PokedexProps) {
   return (
     <PokedexContainer>
       <h1>{title}</h1>
       <PokedexGrid>
-        <PokemonCard />
-        <PokemonCard />
-        <PokemonCard />
-        <PokemonCard />
-        <PokemonCard />
-        <PokemonCard />
-        <PokemonCard />
-        <PokemonCard />
-        <PokemonCard />
+        {onlyFavorites ? (
+          <>
+            <PokemonCard />
+            <PokemonCard />
+            <PokemonCard />
+            <PokemonCard />
+            <PokemonCard />
+            <PokemonCard />
+            <PokemonCard />
+            <PokemonCard />
+            <PokemonCard />
+            <PokemonCard />
+            <PokemonCard />
+            <PokemonCard />
+            <PokemonCard />
+            <PokemonCard />
+            <PokemonCard />
+            <PokemonCard />
+            <PokemonCard />
+            <PokemonCard />
+            <PokemonCard />
+            <PokemonCard />
+            <PokemonCard />
+          </>
+        ) : (
+          <>
+            <PokemonCard />
+            <PokemonCard />
+            <PokemonCard />
+            <PokemonCard />
+            <PokemonCard />
+            <PokemonCard />
+            <PokemonCard />
+            <PokemonCard />
+            <PokemonCard />
+          </>
+        )}
       </PokedexGrid>
     </PokedexContainer>
   );
