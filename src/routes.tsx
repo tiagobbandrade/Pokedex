@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Sidebar } from "./components/Sidebar";
+import { Page404 } from "./pages/Page404";
 import { Home } from "./pages/Home";
 
 export function MainRoutes() {
@@ -8,6 +9,7 @@ export function MainRoutes() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/favorites" element={<Sidebar isActive="favorites" />} />
+        <Route path="*" element={<Page404 />} />
       </Routes>
     </BrowserRouter>
   );
