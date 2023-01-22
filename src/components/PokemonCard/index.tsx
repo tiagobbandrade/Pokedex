@@ -6,7 +6,7 @@ import { FavoritesPokemonsContext } from "../../App";
 import { Header, Main, PokemonContainer, PokemonInfo } from "./style";
 
 export function PokemonCard() {
-  const favorite = useContext(FavoritesPokemonsContext);
+  const favoriteContext = useContext(FavoritesPokemonsContext);
 
   return (
     <PokemonContainer>
@@ -14,7 +14,7 @@ export function PokemonCard() {
         <button>
           <HeartStraight
             size={16}
-            weight={favorite?.favorites.includes(1) ? "fill" : "regular"}
+            weight={favoriteContext?.favorites.includes(1) ? "fill" : "regular"}
             fill="#DA2626"
           />
         </button>
