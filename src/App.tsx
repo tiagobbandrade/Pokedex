@@ -1,13 +1,17 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Sidebar } from "./components/Sidebar";
+import { createContext, useState } from "react";
+import { MainRoutes } from "./routes";
+
+import { FavoritesPokemonsContextProps } from "./types/types";
+
+export const FavoritesPokemonsContext =
+  createContext<FavoritesPokemonsContextProps | null>(null);
 
 export function App() {
+  const [favorites, setFavorites] = useState<number[]>([]);
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Sidebar isActive="pokemons" />} />
-        <Route path="/favorites" element={<Sidebar isActive="favorites" />} />
-      </Routes>
-    </BrowserRouter>
+    <FavoritesPokemonsContext.Provider value={{ favorites, setFavorites }}>
+      <MainRoutes />
+    </FavoritesPokemonsContext.Provider>
   );
 }
