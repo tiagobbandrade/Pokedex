@@ -1,16 +1,18 @@
-import { Dispatch, SetStateAction } from "react";
+export type PokemonsResponseType = {
+  results: {
+    url: string;
+  }[];
+};
 
-export interface FavoritesPokemonsContextProps {
-  favorites: Array<Number>;
-  setFavorites: Dispatch<SetStateAction<number[]>>;
-}
-
-export interface SidebarProps {
-  isActive: "pokemons" | "favorites";
-}
-
-export interface NavLinkProps {
-  isActive: boolean;
-  title: string;
-  path: string;
-}
+export type SpecsFromPokemonType = {
+  id: number;
+  name: string;
+  sprites: {
+    front_default: string;
+  };
+  types: {
+    type: {
+      name: string;
+    };
+  }[];
+};
