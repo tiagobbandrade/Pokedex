@@ -1,6 +1,6 @@
 import { MagnifyingGlass } from "phosphor-react";
 import { Link } from "react-router-dom";
-import { NavLinkProps, SidebarProps } from "../../types/types";
+import { NavLinkProps, SidebarProps } from "../../interfaces/interfaces";
 
 import { SidebarContainer, SidebarContent, ListItem } from "./style";
 
