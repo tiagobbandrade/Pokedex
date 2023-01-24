@@ -16,10 +16,12 @@ export const PokemonContainer = styled.div`
 `;
 
 export const Header = styled.div`
-  width: calc(100% - 24px);
+  width: 100%;
+  height: calc(100% - 24px);
 
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-end;
   justify-content: space-between;
 
   position: absolute;
@@ -42,11 +44,17 @@ export const Header = styled.div`
 export const Main = styled.div`
   display: flex;
   align-items: center;
+  gap: 6px;
+
+  img {
+    margin-left: 8px;
+  }
 `;
 
 export const PokemonInfo = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 2px;
 
   #name,
