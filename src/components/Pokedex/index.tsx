@@ -1,4 +1,4 @@
-import { PokedexContainer } from "./style";
+import { Fade, PokedexContainer } from "./style";
 
 import { PokedexProps } from "../../interfaces/interfaces";
 import { Grid } from "../Grid";
@@ -15,10 +15,10 @@ export function Pokedex({
       {isLoading ? (
         <Loader />
       ) : (
-        <>
+        <Fade>
           <h1 className="title">{title}</h1>
           <Grid onlyFavorites={onlyFavorites} pokemons={pokemons} />
-        </>
+        </Fade>
       )}
     </PokedexContainer>
   );

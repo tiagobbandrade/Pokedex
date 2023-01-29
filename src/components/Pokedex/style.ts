@@ -9,12 +9,17 @@ export const PokedexContainer = styled.div`
   height: ${({ isLoading }: AlignItemsProps) => (isLoading ? "100vh" : "100%")};
 
   display: flex;
-  flex-direction: column;
   align-items: ${({ isLoading }: AlignItemsProps) =>
     isLoading ? "center" : "initial"};
-  gap: 24px;
 
   padding: 56px;
+`;
+
+export const Fade = styled.div`
+  animation: fade 0.6s;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 
   > .title {
     font-size: 24px;
@@ -33,6 +38,16 @@ export const PokedexContainer = styled.div`
       right: 0;
 
       background: #7d7d7d70;
+    }
+  }
+
+  @keyframes fade {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
     }
   }
 `;
