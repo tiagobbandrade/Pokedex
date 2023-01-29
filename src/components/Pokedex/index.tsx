@@ -1,14 +1,18 @@
-import { useAxios } from "../../hooks/useAxios";
+import { useContext } from "react";
+import { FavoritesPokemonsContext } from "../../App";
 import { PokemonCard } from "../PokemonCard";
+
 import { PokedexContainer, PokedexGrid } from "./style";
 
-interface PokedexProps {
-  title: string;
-  onlyFavorites?: boolean;
-}
+import { PokedexProps } from "../../interfaces/interfaces";
 
-export function Pokedex({ title, onlyFavorites }: PokedexProps) {
-  const { isLoading, pokemons } = useAxios();
+export function Pokedex({
+  title,
+  onlyFavorites,
+  isLoading,
+  pokemons,
+}: PokedexProps) {
+  const { favoritesPokemons } = useContext(FavoritesPokemonsContext);
 
   return (
     <PokedexContainer>
@@ -20,11 +24,25 @@ export function Pokedex({ title, onlyFavorites }: PokedexProps) {
           <PokedexGrid>
             {onlyFavorites ? (
               <>
-                <h1>Favorites</h1>
+                {favoritesPokemons.length > 0 ? (
+                  pokemons
+                    .filter(({ id }) => favoritesPokemons.includes(id))
+                    .map(({ name, id, sprites, types }) => (
+                      <PokemonCard
+                        key={id}
+                        id={id}
+                        image_url={sprites.front_default}
+                        name={name}
+                        types={types}
+                      />
+                    ))
+                ) : (
+                  <h3>Not favorites pokemons yet</h3>
+                )}
               </>
             ) : (
               <>
-                {pokemons?.map(({ id, name, sprites, types }) => (
+                {pokemons.map(({ id, name, sprites, types }) => (
                   <PokemonCard
                     key={id}
                     id={id}

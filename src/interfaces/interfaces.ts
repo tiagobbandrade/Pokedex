@@ -1,3 +1,6 @@
+import { Dispatch, SetStateAction } from "react";
+import { SpecsFromPokemonType } from "../types/types";
+
 export interface SidebarProps {
   isActive: "pokemons" | "favorites";
 }
@@ -17,4 +20,21 @@ export interface PokemonCardProps {
       name: string;
     };
   }[];
+}
+
+export interface FavoritesPokemonsContextInterface {
+  favoritesPokemons: number[];
+  setFavoritesPokemons: Dispatch<SetStateAction<number[]>>;
+}
+
+export interface PageProps {
+  isLoading: boolean;
+  pokemons: SpecsFromPokemonType[];
+}
+
+export interface PokedexProps {
+  title: string;
+  onlyFavorites?: boolean;
+  isLoading: boolean;
+  pokemons: SpecsFromPokemonType[];
 }
