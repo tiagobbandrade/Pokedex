@@ -1,10 +1,8 @@
-import { useContext } from "react";
-import { FavoritesPokemonsContext } from "../../App";
-
 import { PokedexContainer } from "./style";
 
 import { PokedexProps } from "../../interfaces/interfaces";
 import { Grid } from "../Grid";
+import { Loader } from "../Loader";
 
 export function Pokedex({
   title,
@@ -13,9 +11,9 @@ export function Pokedex({
   pokemons,
 }: PokedexProps) {
   return (
-    <PokedexContainer>
+    <PokedexContainer isLoading={isLoading}>
       {isLoading ? (
-        <h1>Loading</h1>
+        <Loader />
       ) : (
         <>
           <h1 className="title">{title}</h1>
