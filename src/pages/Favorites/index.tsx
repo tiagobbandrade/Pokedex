@@ -2,11 +2,18 @@ import styled from "styled-components";
 import { Pokedex } from "../../components/Pokedex";
 import { Sidebar } from "../../components/Sidebar";
 
-export function Favorites() {
+import { PageProps } from "../../interfaces/interfaces";
+
+export function Favorites({ isLoading, pokemons }: PageProps) {
   return (
     <FavoritesContainer>
       <Sidebar isActive="favorites" />
-      <Pokedex title="favorites" onlyFavorites />
+      <Pokedex
+        isLoading={isLoading}
+        pokemons={pokemons}
+        title="favorites"
+        onlyFavorites
+      />
     </FavoritesContainer>
   );
 }

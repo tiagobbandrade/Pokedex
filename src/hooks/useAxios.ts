@@ -4,7 +4,7 @@ import { SpecsFromPokemonType } from "../types/types";
 
 export function useAxios() {
   const [isLoading, setIsLoading] = useState(true);
-  const [pokemons, setPokemons] = useState<SpecsFromPokemonType[]>();
+  const [pokemons, setPokemons] = useState<SpecsFromPokemonType[]>([]);
 
   async function fetchPokemons() {
     const { pokemonsCompleteResponse } = await getPokemons();

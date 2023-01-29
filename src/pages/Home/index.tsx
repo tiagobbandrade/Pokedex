@@ -2,11 +2,13 @@ import styled from "styled-components";
 import { Pokedex } from "../../components/Pokedex";
 import { Sidebar } from "../../components/Sidebar";
 
-export function Home() {
+import { PageProps } from "../../interfaces/interfaces";
+
+export function Home({ isLoading, pokemons }: PageProps) {
   return (
     <HomeContainer>
       <Sidebar isActive="pokemons" />
-      <Pokedex title="pokemons" />
+      <Pokedex isLoading={isLoading} pokemons={pokemons} title="pokemons" />
     </HomeContainer>
   );
 }
