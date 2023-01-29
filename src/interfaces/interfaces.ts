@@ -38,3 +38,8 @@ export interface PokedexProps {
   isLoading: boolean;
   pokemons: SpecsFromPokemonType[];
 }
+
+export interface GridProps {
+  onlyFavorites?: boolean;
+  pokemons: SpecsFromPokemonType[];
+}
