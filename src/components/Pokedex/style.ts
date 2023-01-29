@@ -10,13 +10,23 @@ export const PokedexContainer = styled.div`
 
   padding: 56px;
 
-  > h1 {
+  > .title {
     font-size: 24px;
     text-transform: uppercase;
+    color: #7d7d7d70;
+    position: relative;
+    max-width: 180px;
+
+    &::after {
+      content: "";
+      width: 100%;
+      height: 1px;
+
+      position: absolute;
+      bottom: -4px;
+      right: 0;
+
+      background: #7d7d7d70;
+    }
   }
-`;
-export const PokedexGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 18px;
 `;
