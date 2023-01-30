@@ -16,9 +16,11 @@ export const PokedexContainer = styled.div`
 `;
 
 export const Fade = styled.div`
+  width: 100%;
   animation: fade 0.6s;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 24px;
 
   > .title {
