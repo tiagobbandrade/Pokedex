@@ -1,5 +1,8 @@
 import axios, { AxiosError } from "axios";
-import { PokemonsResponseType, SpecsFromPokemonType } from "../types/types";
+import {
+  PokemonsResponseType,
+  SpecsFromPokemonType,
+} from "../interfaces/interfaces";
 
 export async function getPokemons() {
   try {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
+import { SpecsFromPokemonType } from "../interfaces/interfaces";
 import { getPokemons, getSpecsFromPokemon } from "../services/api";
-import { SpecsFromPokemonType } from "../types/types";
 
 export function useAxios() {
   const [isLoading, setIsLoading] = useState(true);
@@ -8,8 +8,8 @@ export function useAxios() {
 
   async function fetchPokemons() {
     const { pokemonsCompleteResponse } = await getPokemons();
-    const specsFromPokemonPromise = pokemonsCompleteResponse?.map((pokemon) =>
-      getSpecsFromPokemon(pokemon.url)
+    const specsFromPokemonPromise = pokemonsCompleteResponse?.map(
+      (pokemon: { url: string }) => getSpecsFromPokemon(pokemon.url)
     );
 
     await Promise.all(specsFromPokemonPromise)

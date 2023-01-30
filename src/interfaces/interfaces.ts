@@ -1,5 +1,4 @@
 import { Dispatch, SetStateAction } from "react";
-import { SpecsFromPokemonType } from "../types/types";
 
 export interface SidebarProps {
   isActive: "pokemons" | "favorites";
@@ -15,6 +14,25 @@ export interface PokemonCardProps {
   id: number;
   image_url: string;
   name: string;
+  types: {
+    type: {
+      name: string;
+    };
+  }[];
+}
+
+export interface PokemonsResponseType {
+  results: {
+    url: string;
+  }[];
+}
+
+export interface SpecsFromPokemonType {
+  id: number;
+  name: string;
+  sprites: {
+    front_default: string;
+  };
   types: {
     type: {
       name: string;
