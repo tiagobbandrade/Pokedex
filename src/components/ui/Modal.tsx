@@ -4,6 +4,7 @@ import { PokemonType } from "../../types";
 import { fetchSpecificPokemon } from "../../services/api";
 import { useSearchParams } from "react-router-dom";
 import { iconsForPokemonsType } from "../../constants";
+import CloseIcon from "../../assets/icons/Close Icon.svg";
 
 export function Modal() {
   const [pokemonInfo, setPokemonInfo] = useState<PokemonType | null>(null);
@@ -72,6 +73,9 @@ export function Modal() {
             ref={layerRef}
             className="w-[620px] z-[999999] rounded-2xl bg-[#191B20] border border-[#23262E] absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 py-14 px-6 flex flex-col items-center"
           >
+            <button onClick={closeModal} className="absolute top-6 right-6">
+              <img src={CloseIcon} alt="Close Icon" />
+            </button>
             {pokemonInfo.sprites && (
               <img
                 src={pokemonInfo.sprites.other.showdown.front_default || ""}
@@ -82,7 +86,7 @@ export function Modal() {
             <h1 className="mt-4 text-3xl font-bold text-white">
               {pokemonInfo.name || "Loading..."}
             </h1>
-            <div>
+            <div className="flex items-center gap-1">
               {pokemonInfo.types.map((type) => (
                 <img
                   src={
