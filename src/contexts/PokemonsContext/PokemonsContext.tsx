@@ -1,10 +1,11 @@
-import {
+import React, {
   createContext,
   Dispatch,
   PropsWithChildren,
   useContext,
   useEffect,
   useReducer,
+  useRef,
   useState,
 } from "react";
 import {
@@ -45,6 +46,8 @@ export function PokemonsContextProvider({ children }: PropsWithChildren) {
   const habitatParam = searchParams.get("habitat");
   const typeParam = searchParams.get("type");
   const searchParam = searchParams.get("search");
+
+  const isFirstFilterApplication = useRef(true);
 
   const handleError = (error: unknown, message: string) => {
     console.error(message, error);
@@ -94,13 +97,14 @@ export function PokemonsContextProvider({ children }: PropsWithChildren) {
       }
 
       const totalItems = filteredEndpoints.length;
-      setPage(1);
       setTotalPages(Math.ceil(totalItems / ITENS_PER_PAGE));
 
-      const paginatedEndpoints = filteredEndpoints.slice(
-        (actualPage - 1) * ITENS_PER_PAGE,
-        actualPage * ITENS_PER_PAGE
-      );
+      const paginatedEndpoints = filteredEndpoints.slice(0, ITENS_PER_PAGE);
+
+      if (isFirstFilterApplication.current) {
+        setPage(1);
+        isFirstFilterApplication.current = false;
+      }
 
       const responses = await getPokemons(paginatedEndpoints);
       dispatch({
@@ -147,7 +151,7 @@ export function PokemonsContextProvider({ children }: PropsWithChildren) {
   }, [actualPage, habitatParam, typeParam, searchParam]);
 
   const notFoundPokemonCondition =
-    state.filteredPokemons.length == 0 &&
+    state.filteredPokemons.length === 0 &&
     (searchParam || habitatParam || typeParam);
 
   setRender(!notFoundPokemonCondition);
