@@ -24,7 +24,7 @@ export function Card({ imgURL, pokemonName, pokemonId, types }: CardProps) {
     <div
       role="button"
       onClick={handleClick}
-      className="w-full h-[272px] px-16 py-9 relative bg-[#191B20] rounded-md border border-[#23262E] flex-grow group cursor-pointer hover:scale-105 transition-transform duration-150"
+      className="max-w-[226px] h-[272px] px-16 py-9 relative bg-[#191B20] rounded-md border border-[#23262E] flex-grow group cursor-pointer hover:scale-105 transition-transform duration-150"
     >
       <span className="absolute text-xs top-3 right-3 text-white/30">
         #{pokemonId}

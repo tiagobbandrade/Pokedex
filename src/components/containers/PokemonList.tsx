@@ -1,10 +1,12 @@
 import { useSearchParams } from "react-router-dom";
 import { usePokemonsContext } from "../../contexts/PokemonsContext/PokemonsContext";
 import { Card } from "../ui/Card";
+import { CardSkeleton } from "../skeletons/CardSkeleton";
 
 export function PokemonList() {
   const {
     state: { pokemons, filteredPokemons },
+    isLoading,
   } = usePokemonsContext();
   const [searchParams] = useSearchParams();
 
@@ -14,6 +16,24 @@ export function PokemonList() {
 
   const conditionToRenderAllPokemons =
     filteredPokemons.length == 0 && !searchParam && !habitatParam && !typeParam;
+
+  const notFoundPokemonCondition =
+    filteredPokemons.length == 0 && (searchParam || habitatParam || typeParam);
+
+  if (isLoading) {
+    return (
+      <section
+        id="pokemon-list"
+        className={
+          "grid items-stretch justify-center grid-cols-5 gap-4 mx-auto mt-5 place-items-center w-fit"
+        }
+      >
+        {new Array(10).fill(0).map((_, index) => (
+          <CardSkeleton key={index} />
+        ))}
+      </section>
+    );
+  }
 
   return (
     <section
@@ -39,7 +59,7 @@ export function PokemonList() {
           />
         ))}
 
-      {!conditionToRenderAllPokemons && (
+      {notFoundPokemonCondition && (
         <p className="font-extralight text-white/40">
           Não achamos o pokémon buscado
         </p>

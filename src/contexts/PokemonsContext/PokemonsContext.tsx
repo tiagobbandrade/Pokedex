@@ -5,6 +5,7 @@ import {
   useContext,
   useEffect,
   useReducer,
+  useState,
 } from "react";
 import {
   initialState,
@@ -20,6 +21,7 @@ import { useSearchParams } from "react-router-dom";
 type PokemonsContextType = {
   state: ReducerPayloadType;
   dispatch: Dispatch<ReducerActionType>;
+  isLoading: boolean;
 };
 
 const PokemonsContext = createContext<PokemonsContextType>(
@@ -29,6 +31,7 @@ const PokemonsContext = createContext<PokemonsContextType>(
 export function PokemonsContextProvider({ children }: PropsWithChildren) {
   const [searchParams] = useSearchParams();
   const [state, dispatch] = useReducer(pokemonReducer, initialState);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const { actualPage, setTotalPages, setRender } = usePaginationContext();
   const {
     getEndpoints,
@@ -124,6 +127,8 @@ export function PokemonsContextProvider({ children }: PropsWithChildren) {
       }
     } catch (error) {
       handleError(error, "Error fetching Pokemons:");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -143,19 +148,18 @@ export function PokemonsContextProvider({ children }: PropsWithChildren) {
   };
 
   useEffect(() => {
+    setIsLoading(true);
     fetchPokemons();
   }, [actualPage, habitatParam, typeParam, searchParam]);
 
-  const conditionToRenderAllPokemons =
+  const notFoundPokemonCondition =
     state.filteredPokemons.length == 0 &&
-    !searchParam &&
-    !habitatParam &&
-    !typeParam;
+    (searchParam || habitatParam || typeParam);
 
-  setRender(conditionToRenderAllPokemons);
+  setRender(!notFoundPokemonCondition);
 
   return (
-    <PokemonsContext.Provider value={{ dispatch, state }}>
+    <PokemonsContext.Provider value={{ dispatch, state, isLoading }}>
       {children}
     </PokemonsContext.Provider>
   );
