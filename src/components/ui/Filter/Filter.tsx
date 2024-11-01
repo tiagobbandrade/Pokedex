@@ -33,7 +33,7 @@ export function Filter({ children }: PropsWithChildren) {
     } else {
       updatedParams.delete("habitat");
     }
-    if (habitat.length) {
+    if (type.length) {
       updatedParams.set("type", type);
     } else {
       updatedParams.delete("type");

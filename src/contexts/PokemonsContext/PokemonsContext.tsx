@@ -43,11 +43,11 @@ export function PokemonsContextProvider({ children }: PropsWithChildren) {
     getAllPokemonsEndpoints,
   } = useFetch();
 
+  const firstFilter = useRef(true);
+
   const habitatParam = searchParams.get("habitat");
   const typeParam = searchParams.get("type");
   const searchParam = searchParams.get("search");
-
-  const isFirstFilterApplication = useRef(true);
 
   const handleError = (error: unknown, message: string) => {
     console.error(message, error);
@@ -99,11 +99,13 @@ export function PokemonsContextProvider({ children }: PropsWithChildren) {
       const totalItems = filteredEndpoints.length;
       setTotalPages(Math.ceil(totalItems / ITENS_PER_PAGE));
 
-      const paginatedEndpoints = filteredEndpoints.slice(0, ITENS_PER_PAGE);
-
-      if (isFirstFilterApplication.current) {
+      const paginatedEndpoints = filteredEndpoints.slice(
+        (actualPage - 1) * ITENS_PER_PAGE,
+        actualPage * ITENS_PER_PAGE
+      );
+      if (firstFilter.current) {
         setPage(1);
-        isFirstFilterApplication.current = false;
+        firstFilter.current = false;
       }
 
       const responses = await getPokemons(paginatedEndpoints);
@@ -151,7 +153,7 @@ export function PokemonsContextProvider({ children }: PropsWithChildren) {
   }, [actualPage, habitatParam, typeParam, searchParam]);
 
   const notFoundPokemonCondition =
-    state.filteredPokemons.length === 0 &&
+    state.filteredPokemons.length == 0 &&
     (searchParam || habitatParam || typeParam);
 
   setRender(!notFoundPokemonCondition);
