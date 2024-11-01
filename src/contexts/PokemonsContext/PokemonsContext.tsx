@@ -32,7 +32,8 @@ export function PokemonsContextProvider({ children }: PropsWithChildren) {
   const [searchParams] = useSearchParams();
   const [state, dispatch] = useReducer(pokemonReducer, initialState);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const { actualPage, setTotalPages, setRender } = usePaginationContext();
+  const { actualPage, setTotalPages, setRender, setPage } =
+    usePaginationContext();
   const {
     getEndpoints,
     getPokemons,
@@ -78,11 +79,6 @@ export function PokemonsContextProvider({ children }: PropsWithChildren) {
 
       if (searchParam) {
         const allPokemons = await getAllPokemonsEndpoints();
-        const filteredPokemons = allPokemons.filter(
-          (pokemon: { name: string }) =>
-            pokemon.name.toLowerCase().includes(searchParam)
-        );
-        console.log(filteredPokemons);
 
         const searchEndpoints = allPokemons
           .filter((pokemon: { name: string }) =>
@@ -92,17 +88,13 @@ export function PokemonsContextProvider({ children }: PropsWithChildren) {
           )
           .map((pokemon: { url: string }) => pokemon.url);
 
-        console.log(searchEndpoints);
-        console.log(filteredEndpoints);
-
         filteredEndpoints = filteredEndpoints.length
           ? filteredEndpoints.filter((url) => searchEndpoints.includes(url))
           : searchEndpoints;
       }
 
-      console.log();
-
       const totalItems = filteredEndpoints.length;
+      setPage(1);
       setTotalPages(Math.ceil(totalItems / ITENS_PER_PAGE));
 
       const paginatedEndpoints = filteredEndpoints.slice(
