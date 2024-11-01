@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .blue-circle {
+        @apply before:absolute before:content-[''] before:bottom-[502px] before:left-1/2 before:-translate-x-1/2 before:w-[1054px] before:h-[710px] before:bg-[#104f4799] before:rounded-[50%] before:blur-[250px] before:z-0
+    }
+
+    .glow-text {
+        @apply [text-shadow:_0_0_6.6px_#33CC99]
+    }
+
+    .dark-fade-to-r {
+        @apply before:content-[''] before:absolute before:h-full before:w-52 before:bg-dark-fade-to-right before:left-0
+    }
+
+    .dark-fade-to-l {
+        @apply after:content-[''] after:absolute after:h-full after:w-52 after:bg-dark-fade-to-left after:right-0
+    }
+}
+
+* {
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+}
