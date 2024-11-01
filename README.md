@@ -1,50 +1,45 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## Poke.dex | ESO
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Pokedex desenvolvida usando ReactJS com typescript e utilização da PokeAPI V2.
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+#### Licença
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+[MIT](https://choosealicense.com/licenses/mit/)
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Features
+
+
+| Responsividade ❌   | ContextAPI ✅       | HTTP State ✅                        |
+| ---------- | --------- | ---------------------------------- |
+| Data Fetching ✅ | Paginação ✅ | Múltiplos filtros ✅ |
+
+
+
+
+## Demonstração
+
+![2024-11-01 15-32-14](https://github.com/user-attachments/assets/c709d5e0-43e8-4ba7-92c6-b8d3abc00286)
+
+
+
+## Links úteis
+
+Deploy: [Pokedex](https://pokedex-eso.vercel.app/)
+
+Figma: [Pokedex figma](https://www.figma.com/design/3EweRJ09fr0SIkhAA3QO88/Pokedex?node-id=0-1&t=lHoyKiV8QMTAd2LY-1)
+
+
+
+
+## Stack utilizada
+
+**Front-end:** React, TailwindCSS, Typescript, Axios, React Router Dom
+
+
