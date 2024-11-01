@@ -86,7 +86,9 @@ export function PokemonsContextProvider({ children }: PropsWithChildren) {
 
         const searchEndpoints = allPokemons
           .filter((pokemon: { name: string }) =>
-            pokemon.name.toLowerCase().includes(searchParam.toLowerCase())
+            pokemon.name
+              .toLowerCase()
+              .includes(searchParam.toLowerCase().trim())
           )
           .map((pokemon: { url: string }) => pokemon.url);
 
